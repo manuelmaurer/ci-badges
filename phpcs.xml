@@ -1,0 +1,31 @@
+<ruleset name="coding-style">
+    <description>Julender coding styles</description>
+
+    <!-- Include the whole PSR-1 standard -->
+    <rule ref="PSR1"/>
+
+    <!-- Include the whole PSR-12 standard -->
+    <rule ref="PSR12"/>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="520"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.Files.ByteOrderMark"/>
+    <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+    <rule ref="Generic.Commenting.Todo"/>
+    <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+    <rule ref="Generic.Formatting.SpaceAfterCast"/>
+    <rule ref="Generic.NamingConventions.ConstructorName"/>
+    <rule ref="Generic.PHP.DeprecatedFunctions"/>
+    <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+    <rule ref="Squiz.Scope.MethodScope"/>
+    <rule ref="Squiz.Classes.ValidClassName"/>
+    <rule ref="PEAR.Functions.ValidDefaultValue"/>
+    <rule ref="Zend.Files.ClosingTag"/>
+</ruleset>

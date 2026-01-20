@@ -1,0 +1,19 @@
+services:
+  lb:
+    image: nginx:latest
+    volumes:
+      - ./.dev/lb/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "127.0.0.1:8081:80"
+  app:
+    build:
+      context: .dev/app
+    volumes:
+      - ./:/var/www/html
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui:latest
+    environment:
+      SWAGGER_JSON: /spec/main.yml
+    volumes:
+      - ./spec:/spec

@@ -1,0 +1,67 @@
+openapi: 3.0.4
+info:
+  title: CI-Badges API
+  description: This is a slim based api to generate badges for ci reports
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8081/v1
+    description: Development server
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /badges/{badgeName}:
+    get:
+      security: []
+      summary: Download a badge
+      parameters:
+        - in: path
+          name: badgeName
+          required: true
+          schema:
+            $ref: 'components.yml#/components/schemas/BadgeName'
+      responses:
+        "200":
+          description: A badge image
+          content:
+            application/svg+xml:
+              schema:
+                type: string
+                format: binary
+    put:
+      summary: Update a single badge
+      parameters:
+        - in: path
+          name: badgeName
+          required: true
+          schema:
+            $ref: 'components.yml#/components/schemas/BadgeName'
+      requestBody:
+        description: Badge to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'components.yml#/components/schemas/SingleBadgeUpdate'
+      responses:
+        "200":
+          description: OK
+    delete:
+      parameters:
+        - in: path
+          name: badgeName
+          required: true
+          schema:
+            $ref: 'components.yml#/components/schemas/BadgeName'
+      responses:
+        "200":
+          description: OK

@@ -1,0 +1,40 @@
+components:
+  schemas:
+    BadgeName:
+      type: string
+      description: The unique name of the badge
+    BadgeValueFloat:
+      description: A percentage value between 0 and 100, will be dispalyed as <value>% and automatically color-graded
+      example: 75
+      type: number
+      minimum: 0
+      maximum: 100
+    BadgeValueStatic:
+      type: object
+      required:
+        - text
+        - color
+      properties:
+        text:
+          type: string
+          example: "fail"
+          description: The text to display
+        color:
+          type: string
+          example: "red"
+          description: The color to display the text in
+    SingleBadgeUpdate:
+      type: object
+      required:
+        - label
+        - value
+      properties:
+        label:
+          type: string
+          example: "Line Coverage"
+          description: The left-hand side label of the badge
+        value:
+          description: The right-hand side value of the badge
+          oneOf:
+            - $ref: '#/components/schemas/BadgeValueFloat'
+            - $ref: '#/components/schemas/BadgeValueStatic'
